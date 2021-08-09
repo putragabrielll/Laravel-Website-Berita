@@ -19,7 +19,7 @@ class PlaylistController extends Controller
      */
     public function index()
     {
-        $playlist = Playlist::all();
+        $playlist = Playlist::latest()->get();
         $user = User::where('id', Auth::user()->id)->first();
         return view('utama.playlist.index', compact('playlist','user'));
         // sama aja ama yg di atas
@@ -103,7 +103,6 @@ class PlaylistController extends Controller
                 'deskripsi' => $request->deskripsi,
                 'slug' => Str::slug($request->judul_playlist),
                 'is_active' => $request->is_active,
-                'user_id' => Auth::id(),
             ]);
             
             Alert::info('Updated', 'Data Berhasil Di Updated !!!');
@@ -117,7 +116,6 @@ class PlaylistController extends Controller
                 'deskripsi' => $request->deskripsi,
                 'slug' => Str::slug($request->judul_playlist),
                 'is_active' => $request->is_active,
-                'user_id' => Auth::id(),
                 'gambar_playlist' => $request->file('gambar_playlist')->store('playlist'),
             ]);
 

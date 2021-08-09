@@ -19,7 +19,7 @@
                     <div class="single-icon">
                     <i class="bi bi-phone"></i>
                     <p>
-                        Call: +1 5589 55488 55<br>
+                        Call: (0622) 2022071<br>
                         <span>Monday-Friday (9am-5pm)</span>
                     </p>
                     </div>
@@ -32,7 +32,7 @@
                     <i class="bi bi-envelope"></i>
                     <p>
                         Email: info@example.com<br>
-                        <span>Web: www.example.com</span>
+                        <span>Web: <a href="https://sionkjb.com/">www.sionkjb.com</a></span>
                     </p>
                     </div>
                 </div>
@@ -43,8 +43,8 @@
                     <div class="single-icon">
                     <i class="bi bi-geo-alt"></i>
                     <p>
-                        Location: A108 Adam Street<br>
-                        <span>NY 535022, USA</span>
+                        Jl. Gunung Mas No.46, Pasirkaliki, Kec. Cimahi Utara, Kota Cimahi, Jawa Barat<br>
+                        <span>40514</span>
                     </p>
                     </div>
                 </div>

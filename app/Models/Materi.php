@@ -11,7 +11,7 @@ class Materi extends Model
 
     protected $table = 'materi';
     protected $fillable = [
-        'judul_materi', 'slug', 'link', 'deskripsi', 'playlist_id', 'is_active', 'gambar_materi'
+        'judul_materi', 'slug', 'link', 'deskripsi', 'playlist_id', 'user_id', 'is_active', 'gambar_materi'
     ];
     protected $hidden = [];
 
@@ -19,6 +19,10 @@ class Materi extends Model
     // playlist_id itu adalah foregn key yg mau di ambil, id adalah primary key dari tabel playlist
     public function playlist(){
         return $this->belongsTo(Playlist::class, 'playlist_id', 'id');
+    }
+
+    public function users(){
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
 }

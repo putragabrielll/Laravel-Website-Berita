@@ -37,17 +37,28 @@
                             <textarea name="deskripsi" id="editor1" class="form-control">{{ $playlist->deskripsi }}</textarea>
                         </div>
 
-                        <div class="form-group">
-                            <label for="status">Status</label>
-                            <select name="is_active" class="form-control">
-                                <option value="1" {{ $playlist->is_active == '1' ? 'selected' : ''}}>
-                                    Publish
-                                </option>
-                                <option value="0" {{ $playlist->is_active == '0' ? 'selected' : ''}}>
-                                    Draft
-                                </option>
-                            </select>
-                        </div>
+                        @if (auth()->user()->level=="admin")
+                            <div class="form-group">
+                                <label for="status">Status</label>
+                                <select name="is_active" class="form-control">
+                                    <option value="1" {{ $playlist->is_active == '1' ? 'selected' : ''}}>
+                                        Publish
+                                    </option>
+                                    <option value="0" {{ $playlist->is_active == '0' ? 'selected' : ''}}>
+                                        Draft
+                                    </option>
+                                </select>
+                            </div>
+                        @elseif (auth()->user()->level=="user")
+                            <div class="form-group">
+                                <label for="status">Status</label>
+                                <select name="is_active" class="form-control">
+                                    <option value="0" {{ $playlist->is_active == '0' ? 'selected' : ''}}>
+                                        Draft
+                                    </option>
+                                </select>
+                            </div>
+                        @endif
 
                         <div class="form-group">
                             <label for="gambar">Gambar Playlist</label>

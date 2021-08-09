@@ -101,7 +101,7 @@
 				<div class="card full-height">
 					<div class="card-header">
 						<div class="card-head-row">
-							<div class="card-title">Materi Video</div>
+							<div class="card-title">Draft Materi Video</div>
 						</div>
 					</div>
 					<!-- untuk manggil data materi di dashboard -->
@@ -112,6 +112,7 @@
 									<tr>
 										<th>Gambar</th>
 										<th>Judul</th>
+										<th>Status</th>
 										<th>Action</th>
 									</tr>
 								</thead>
@@ -120,6 +121,13 @@
 										<tr>
 											<td><img src="{{ asset('uploads/' . $row->gambar_materi) }}" width="50"></td>
 											<td>{{ $row->judul_materi }}</td>
+											<td>
+												@if ($row->is_active == '1')
+													<span class="badge badge-success">Active</span>
+												@else
+													<span class="badge badge-danger">Draft</span>
+												@endif
+											</td>
 											<td><a href="{{ route('materi.edit', $row->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a></td>
 										</tr>
 									@empty
@@ -136,7 +144,7 @@
 				<div class="card full-height">
 					<div class="card-header">
 						<div class="card-head-row">
-							<div class="card-title">Playlist Video</div>
+							<div class="card-title">Draft Playlist Video</div>
 						</div>
 					</div>
 					<!-- untuk manggil data playlist di dashboard -->
@@ -147,6 +155,7 @@
 									<tr>
 										<th>Gambar</th>
 										<th>Judul</th>
+										<th>Status</th>
 										<th>Action</th>
 									</tr>
 								</thead>
@@ -155,6 +164,13 @@
 										<tr>
 											<td><img src="{{ asset('uploads/' . $row->gambar_playlist) }}" width="50"></td>
 											<td>{{ $row->judul_playlist }}</td>
+											<td>
+												@if ($row->is_active == '1')
+													<span class="badge badge-success">Active</span>
+												@else
+													<span class="badge badge-danger">Draft</span>
+												@endif
+											</td>
 											<td><a href="{{ route('playlist.edit', $row->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a></td>
 										</tr>
 									@empty

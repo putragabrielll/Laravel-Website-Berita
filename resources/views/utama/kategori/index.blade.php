@@ -56,7 +56,7 @@
                                                 </button>
                                             </form>
                                         @elseif (auth()->user()->level=="user")
-                                            <button disabled="disabled" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></button>
+                                            <a href="{{ route('kategori.edit', $row->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                                             <form action="{{ route('kategori.destroy', $row->id) }}" method="post" class="d-inline">
                                             @csrf
                                             @method('delete')

@@ -16,7 +16,7 @@
                     <div class="card-header">
                         <div class="card-head-row">
                             <div class="card-title">Form Materi Vidio</div>
-                            <a href="{{ route('materi.index') }}" class="btn btn-warning btn-sm ml-auto">
+                            <a href="{{ route('penulis_materi.index') }}" class="btn btn-warning btn-sm ml-auto">
                                 <i class="fas fa-undo"></i>&nbsp;
                                 Back
                             </a>
@@ -24,7 +24,7 @@
                     </div>
 
                     <div class="card-body">
-                        <form method="post" action="{{ route('materi.store') }}" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('penulis_materi.store') }}" enctype="multipart/form-data">
                         @csrf
                             <div class="form-group">
                                 <label for="judul">Materi Vidio</label>
@@ -61,7 +61,6 @@
                             <div class="form-group">
                                 <label for="status">Status</label>
                                 <select name="is_active" class="form-control">
-                                    <option value="1">Publish</option>
                                     <option value="0">Draft</option>
                                 </select>
                             </div>

@@ -25,11 +25,12 @@ class DashboardController extends Controller
         $user_total = User::count();
         $artikel_total = Artikel::where('is_active', 1)->count();
         $kategori_total = Kategori::count();
-        $vidio = Materi::count();
-        // Untuk menampilkan data saja di dashboard
-        $materi = Materi::all();
-        $playlist = Playlist::all();
+        $vidio = Materi::where('is_active', 1)->count();
+        // Untuk Menampilkan semua data yang Draft
+        $materi = Materi::where('is_active', 0)->get();
+        $playlist = Playlist::where('is_active', 0)->get();
         $artikel = Artikel::where('is_active', 0)->get();
+        // Untuk menampilkan data saja di dashboard
         $last_artikel = Artikel::latest()->simplePaginate(10);
         $terbaru_artikel = Artikel::where('is_active', 1)->simplePaginate(10);
         $user = User::where('id', Auth::user()->id)->first();

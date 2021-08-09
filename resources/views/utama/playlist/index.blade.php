@@ -62,15 +62,26 @@
                                         <img src="{{ asset('uploads/' . $row->gambar_playlist) }}" width="100">
                                     </td>
                                     <td>
-                                        <!-- playlist.edit merupakan playlist nya itu mengarah ke kontroller playlist lalu method edit -->
-                                        <a href="{{ route('playlist.edit', $row->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                                        <form action="{{ route('playlist.destroy', $row->id) }}" method="post" class="d-inline">
-                                        @csrf
-                                        @method('delete')
-                                            <button class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin akan menghapus data ?');">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </form>
+                                        @if (auth()->user()->level=="admin")
+                                            <!-- playlist.edit merupakan playlist nya itu mengarah ke kontroller playlist lalu method edit -->
+                                            <a href="{{ route('playlist.edit', $row->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                                            <form action="{{ route('playlist.destroy', $row->id) }}" method="post" class="d-inline">
+                                            @csrf
+                                            @method('delete')
+                                                <button class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin akan menghapus data ?');">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
+                                        @elseif (auth()->user()->level=="user")
+                                            <a href="{{ route('playlist.edit', $row->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                                            <form action="{{ route('playlist.destroy', $row->id) }}" method="post" class="d-inline">
+                                            @csrf
+                                            @method('delete')
+                                                <button disabled="disabled" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin akan menghapus data ?');">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
+                                        @endif
                                     </td>
                                 </tr>
                                 @empty

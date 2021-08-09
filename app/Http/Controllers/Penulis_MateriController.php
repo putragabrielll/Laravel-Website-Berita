@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Artikel;
-use App\Models\Kategori;
+use App\Models\Materi;
+use App\Models\Playlist;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class Penulis_ArtikelController extends Controller
+class Penulis_MateriController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,9 +20,9 @@ class Penulis_ArtikelController extends Controller
      */
     public function index()
     {
-        $artikel = Artikel::latest()->where('user_id', Auth::user()->id)->get();
+        $materi = Materi::latest()->where('user_id', Auth::user()->id)->get();
         $user = User::where('id', Auth::user()->id)->first();
-        return view('penulis.artikel.index', compact('artikel','user'));
+        return view('penulis.materi.index', compact('materi','user'));
     }
 
     /**
@@ -32,9 +32,9 @@ class Penulis_ArtikelController extends Controller
      */
     public function create()
     {
-        $kategori = Kategori::all();
+        $playlist = Playlist::where('is_active', 1)->get();
         $user = User::where('id', Auth::user()->id)->first();
-        return view ('penulis.artikel.create', compact('kategori','user'));
+        return view ('penulis.materi.create', compact('playlist','user'));
     }
 
     /**
@@ -46,21 +46,20 @@ class Penulis_ArtikelController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            // Ini validasi, nama kategori=name, form di kategori create
-            'judul' => 'required|min:4',
+            // Ini validasi
+            'judul_materi' => 'required|min:4',
         ]);
             
         // Untuk Simpan Data Yang Telah Di Input
         $data = $request->all();
-        $data['slug'] = Str::slug($request->judul);
+        $data['slug'] = Str::slug($request->judul_materi);
         $data['user_id'] = Auth::id();
-        $data['views'] = 0;
-        $data['gambar_artikel'] = $request->file('gambar_artikel')->store('artikel');
+        $data['gambar_materi'] = $request->file('gambar_materi')->store('materi');
 
-        Artikel::create($data);
+        Materi::create($data);
 
         Alert::success('Berhasil', 'Data Berhasil Di Tambahkan !!!');
-        return redirect()->route('penulis_artikel.index');
+        return redirect()->route('penulis_materi.index');
     }
 
     /**
@@ -82,12 +81,12 @@ class Penulis_ArtikelController extends Controller
      */
     public function edit($id)
     {
-        $artikel = Artikel::find($id);
-        $kategori = Kategori::all();
+        $materi = Materi::find($id);
+        $playlist = Playlist::where('is_active', 1)->get();
         $user = User::where('id', Auth::user()->id)->first();
-        return view('penulis.artikel.edit', compact('artikel', 'kategori','user'));
+        return view('penulis.materi.edit', compact('materi', 'playlist','user'));
         // sama aja yg di atas ama yg d bawah
-        // return view('penulis.artikel.edit', ['artikel' => $artikel, 'kategori' => $kategori]);
+        // return view('penulis.materi.edit', ['materi' => $materi, 'playlist' => $playlist]);
     }
 
     /**
@@ -99,35 +98,40 @@ class Penulis_ArtikelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if (empty($request->file('gambar_artikel'))){
-            $artikel = Artikel::find($id);
-            $artikel->update([
-                'judul' => $request->judul,
-                'body' => $request->body,
-                'slug' => Str::slug($request->judul),
-                'kategori_id' => $request->kategori_id,
+        $this->validate($request, [
+            // Ini validasi
+            'judul_materi' => 'required|min:4',
+        ]);
+
+        if (empty($request->file('gambar_materi'))){
+            $materi = Materi::find($id);
+            $materi->update([
+                'judul_materi' => $request->judul_materi,
+                'link' => $request->link,
+                'deskripsi' => $request->deskripsi,
+                'slug' => Str::slug($request->judul_materi),
+                'playlist_id' => $request->playlist_id,
                 'is_active' => $request->is_active,
-                'user_id' => Auth::id(),
             ]);
             
             Alert::info('Updated', 'Data Berhasil Di Updated !!!');
-            return redirect()->route('penulis_artikel.index');
+            return redirect()->route('materi.index');
         } else{
-            $artikel = Artikel::find($id);
+            $materi = Materi::find($id);
             // Storage::delete untuk mengahapus gambar yg telah di delete, karna biasanya tersimpan
-            Storage::delete($artikel->gambar_artikel);
-            $artikel->update([
-                'judul' => $request->judul,
-                'slug' => Str::slug($request->judul),
-                'body' => $request->body,
-                'kategori_id' => $request->kategori_id,
+            Storage::delete($materi->gambar_materi);
+            $materi->update([
+                'judul_materi' => $request->judul_materi,
+                'link' => $request->link,
+                'deskripsi' => $request->deskripsi,
+                'slug' => Str::slug($request->judul_materi),
+                'playlist_id' => $request->playlist_id,
                 'is_active' => $request->is_active,
-                'user_id' => Auth::id(),
-                'gambar_artikel' => $request->file('gambar_artikel')->store('artikel'),
+                'gambar_materi' => $request->file('gambar_materi')->store('materi'),
             ]);
 
             Alert::info('Updated', 'Data Berhasil Di Updated !!!');
-            return redirect()->route('penulis_artikel.index');
+            return redirect()->route('penulis_materi.index');
         }
     }
 
@@ -139,13 +143,13 @@ class Penulis_ArtikelController extends Controller
      */
     public function destroy($id)
     {
-        $artikel = Artikel::find($id);
+        $materi = Materi::find($id);
 
         // Storage::delete untuk mengahapus gambar yg telah di delete, karna biasanya tersimpan
-        Storage::delete($artikel->gambar_artikel);
-        $artikel->delete();
+        Storage::delete($materi->gambar_materi);
+        $materi->delete();
 
         Alert::error('Terhapus', 'Data Berhasil Di Hapus !!!');
-        return redirect()->route('penulis_artikel.index');
+        return redirect()->route('penulis_materi.index');
     }
 }

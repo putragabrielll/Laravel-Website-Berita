@@ -8,23 +8,20 @@
             <div class="footer-content">
               <div class="footer-head">
                 <div class="footer-logo">
-                  <h2><span>e</span>Business</h2>
+                  <h2><span>KJB</span>&nbsp;WebSite</h2>
                 </div>
 
                 <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.</p>
                 <div class="footer-icons">
                   <ul>
                     <li>
-                      <a href="#"><i class="bi bi-facebook"></i></a>
+                      <a href="https://www.youtube.com/channel/UCAMsp1sJ-qsGaaP61xKJhYg"><i class="bi bi-youtube"></i></a>
                     </li>
                     <li>
-                      <a href="#"><i class="bi bi-twitter"></i></a>
+                      <a href="https://www.facebook.com/106999204776215/"><i class="bi bi-facebook"></i></a>
                     </li>
                     <li>
-                      <a href="#"><i class="bi bi-instagram"></i></a>
-                    </li>
-                    <li>
-                      <a href="#"><i class="bi bi-linkedin"></i></a>
+                      <a href="https://www.instagram.com/sionpriangan.kjb/"><i class="bi bi-instagram"></i></a>
                     </li>
                   </ul>
                 </div>

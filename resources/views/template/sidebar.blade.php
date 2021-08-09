@@ -71,7 +71,7 @@
 				</li> -->
 
 				@if (auth()->user()->level=="admin")
-					<!-- Artikel -->
+					<!-- Artikel Admin -->
 					<li class="nav-item">
 						<a href="{{ route('artikel.index') }}">
 							<i class="fas fa-th-list"></i>
@@ -79,11 +79,44 @@
 						</a>
 					</li>
 				@elseif (auth()->user()->level=="user")
-					<!-- Artikel -->
+					<!-- Artikel Penulis -->
 					<li class="nav-item">
 						<a href="{{ route('penulis_artikel.index') }}">
 							<i class="fas fa-th-list"></i>
 							<p>Artikel</p>
+						</a>
+					</li>
+				@endif
+
+				<li class="nav-section">
+					<span class="sidebar-mini-icon">
+						<i class="fa fa-ellipsis-h"></i>
+					</span>
+					<h4 class="text-section">Master Vidio</h4>
+				</li>
+
+				<!-- Playlist -->
+				<li class="nav-item">
+					<a href="{{ route('playlist.index') }}">
+						<i class="fas fa-video"></i>
+						<p>Playlist Vidio</p>
+					</a>
+				</li>
+
+				@if (auth()->user()->level=="admin")
+					<!-- Materi Vidio Admin -->
+					<li class="nav-item">
+						<a href="{{ route('materi.index') }}">
+							<i class="fas fa-film"></i>
+							<p>Materi Vidio</p>
+						</a>
+					</li>
+				@elseif (auth()->user()->level=="user")
+					<!-- Materi Vidio Penulis -->
+					<li class="nav-item">
+						<a href="{{ route('penulis_materi.index') }}">
+							<i class="fas fa-film"></i>
+							<p>Materi Vidio</p>
 						</a>
 					</li>
 				@endif
@@ -96,29 +129,6 @@
 							<p>User</p>
 						</a>
 					</li> -->
-
-					<li class="nav-section">
-						<span class="sidebar-mini-icon">
-							<i class="fa fa-ellipsis-h"></i>
-						</span>
-						<h4 class="text-section">Master Vidio</h4>
-					</li>
-
-					<!-- Playlist -->
-					<li class="nav-item">
-						<a href="{{ route('playlist.index') }}">
-							<i class="fas fa-video"></i>
-							<p>Playlist Vidio</p>
-						</a>
-					</li>
-
-					<!-- Materi Vidio -->
-					<li class="nav-item">
-						<a href="{{ route('materi.index') }}">
-							<i class="fas fa-film"></i>
-							<p>Materi Vidio</p>
-						</a>
-					</li>
 
 					<li class="nav-section">
 						<span class="sidebar-mini-icon">

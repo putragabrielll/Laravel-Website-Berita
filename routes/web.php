@@ -19,6 +19,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Front_Berita_AllController;
 // Untuk Penulis
 use App\Http\Controllers\Penulis_ArtikelController;
+use App\Http\Controllers\Penulis_MateriController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,7 +61,6 @@ Route::group(['middleware' => ['auth','ceklevel:admin']], function() {
     // Untuk menu-menu di sidebar
     Route::resource('/kategori', KategoriController::class,);
     Route::resource('/artikel', ArtikelController::class,);
-    Route::resource('/playlist', PlaylistController::class,);
     Route::resource('/materi', MateriController::class,);
     Route::resource('/slide', SlideController::class,);
     Route::resource('/iklan', IklanController::class,);
@@ -69,13 +69,15 @@ Route::group(['middleware' => ['auth','ceklevel:admin']], function() {
 // Untuk Akses Bersama
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::resource('/kategori', KategoriController::class,);
     Route::resource('/profile', ProfileController::class,);
     Route::resource('/password', PasswordController::class,);
+    Route::resource('/kategori', KategoriController::class,);
+    Route::resource('/playlist', PlaylistController::class,);
 });
 
 
 // Hak Akses Penulis
 Route::group(['middleware' => ['auth','ceklevel:user, admin']], function() {
     Route::resource('/penulis_artikel', Penulis_ArtikelController::class,);
+    Route::resource('/penulis_materi', Penulis_MateriController::class,);
 });

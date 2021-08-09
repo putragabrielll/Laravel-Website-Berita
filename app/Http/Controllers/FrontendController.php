@@ -15,11 +15,11 @@ class FrontendController extends Controller
     public function index()
     {
         // Bagian Home
-        $kategori = Kategori::withCount('Artikel')->get()->random(5);
-        $playlist = Playlist::latest()->get()->where('is_active', 1)->random(2);
+        $kategori = Kategori::latest()->get()->random(5);
+        $playlist = Playlist::latest()->get()->where('is_active', 1)->random(5);
         $slide = Slide::where('is_active', 1)->get();
         $artikel = Artikel::latest()->get()->where('is_active', 1)->random(6);
-        $materi = Materi::latest()->paginate(1);
+        $materi = Materi::latest()->where('user_id', 9)->where('is_active', 1)->paginate(1);
         $iklan_a = Iklan::where('is_active', 1)->where('id', 3)->get();
         return view('front.home', compact(
             'kategori',
@@ -36,15 +36,16 @@ class FrontendController extends Controller
     // Bagian Detail Artikel
     public function detail($slug)
     {
-        // $kategori = Kategori::latest()->get()->random(5);
-        $kategori = Kategori::withCount('Artikel')->get();
-        $playlist = Playlist::latest()->get()->where('is_active', 1)->random(2);
+        $kategori = Kategori::latest()->get()->random(5);
+        $kategori_sidebar = Kategori::withCount('Artikel')->get();
+        $playlist = Playlist::latest()->get()->where('is_active', 1)->random(5);
         $artikel = Artikel::where('slug', $slug)->first();
         $iklan_a = Iklan::where('is_active', 1)->where('id', 3)->get();
         $iklan_b = Iklan::where('is_active', 1)->where('id', 4)->get();
         $recent_post = Artikel::latest()->get()->where('is_active', 1)->random(5);
         return view('front.detail_artikel.index', compact(
             'kategori',
+            'kategori_sidebar',
             'playlist',
             'artikel',
             'recent_post',
@@ -59,8 +60,9 @@ class FrontendController extends Controller
         // Memanggil artikel berdasarkan Kategori
         $artikelall = $kategori->artikel()->where('is_active', 1)->simplePaginate(8);
         $putra_sihombing = $kategori;
-        $kategori = Kategori::withCount('Artikel')->get();
-        $playlist = Playlist::latest()->get()->where('is_active', 1)->random(2);
+        $kategori = Kategori::latest()->get()->random(5);
+        $kategori_sidebar = Kategori::withCount('Artikel')->get();
+        $playlist = Playlist::latest()->get()->where('is_active', 1)->random(5);
         $recent_post = Artikel::latest()->get()->where('is_active', 1)->random(5);
         $iklan_a = Iklan::where('is_active', 1)->where('id', 3)->get();
         $iklan_b = Iklan::where('is_active', 1)->where('id', 4)->get();
@@ -70,6 +72,7 @@ class FrontendController extends Controller
             'artikelall',
             'putra_sihombing',
             'kategori',
+            'kategori_sidebar',
             'playlist',
             'recent_post',
             'iklan_a',
@@ -82,8 +85,8 @@ class FrontendController extends Controller
     {
         $playlist_materi = $playlist->materi()->where('is_active', 1)->simplePaginate(12);
         $putra_sihombing = $playlist;
-        $kategori = Kategori::withCount('Artikel')->get();
-        $playlist = Playlist::latest()->get()->where('is_active', 1)->random(2);
+        $kategori = Kategori::latest()->get()->random(5);
+        $playlist = Playlist::latest()->get()->where('is_active', 1)->random(5);
         $iklan_a = Iklan::where('is_active', 1)->where('id', 3)->get();
 
         return view('front.playlist.index', compact(
@@ -98,14 +101,16 @@ class FrontendController extends Controller
     // Bagian Detail Materi Vidio
     public function vidio($slug)
     {
-        $kategori = Kategori::withCount('Artikel')->get();
-        $playlist = Playlist::latest()->get()->where('is_active', 1)->random(2);
+        $kategori = Kategori::latest()->get()->random(5);
+        $kategori_sidebar = Kategori::withCount('Artikel')->get();
+        $playlist = Playlist::latest()->get()->where('is_active', 1)->random(5);
         $materi = Materi::where('slug', $slug)->first();
         $iklan_a = Iklan::where('is_active', 1)->where('id', 3)->get();
         $iklan_b = Iklan::where('is_active', 1)->where('id', 4)->get();
         $recent_post = Artikel::latest()->get()->where('is_active', 1)->random(5);
         return view('front.materi_vidio.index', compact(
             'kategori',
+            'kategori_sidebar',
             'playlist',
             'materi',
             'iklan_a',

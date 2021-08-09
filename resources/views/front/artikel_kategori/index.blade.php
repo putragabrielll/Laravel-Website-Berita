@@ -142,7 +142,7 @@
                                 <div class="left-blog">
                                 <h4>Kategories</h4>
                                 <ul>
-                                    @foreach ($kategori as $row)
+                                    @foreach ($kategori_sidebar as $row)
                                         <li><a href="{{ route('artikel-kategori', $row->slug) }}">{{ $row->nama_kategori }}<span>&nbsp;&nbsp;({{ $row->artikel_count}})</span></a></li>
                                     @endforeach
                                 </ul>

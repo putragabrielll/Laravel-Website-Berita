@@ -15,7 +15,7 @@
 				<div class="card-header">
 					<div class="card-head-row">
 						<div class="card-title">Data Materi</div>
-                        <a href="{{ route('materi.create') }}" class="btn btn-primary btn-sm ml-auto">
+                        <a href="{{ route('penulis_materi.create') }}" class="btn btn-primary btn-sm ml-auto">
                             <i class="fas fa-plus"></i>&nbsp;
                             Tambah Materi
                         </a>
@@ -64,8 +64,8 @@
                                     </td>
                                     <td>
                                         <!-- playlist.edit merupakan playlist nya itu mengarah ke kontroller playlist lalu method edit -->
-                                        <a href="{{ route('materi.edit', $row->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                                        <form action="{{ route('materi.destroy', $row->id) }}" method="post" class="d-inline">
+                                        <a href="{{ route('penulis_materi.edit', $row->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                                        <form action="{{ route('penulis_materi.destroy', $row->id) }}" method="post" class="d-inline">
                                         @csrf
                                         @method('delete')
                                             <button class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin akan menghapus data ?');">
@@ -76,7 +76,7 @@
                                 </tr>
                                 @empty
                                 <tr>
-                                    <td colspan="7" class="text-center">Data Masih Kosong !!!</td>
+                                    <td colspan="8" class="text-center">Data Masih Kosong !!!</td>
                                 </tr>
                                 @endforelse
                             </tbody>

@@ -53,7 +53,6 @@
                         <div class="form-group">
                             <label for="status">Status</label>
                             <select name="is_active" class="form-control">
-                                <!-- <option value="1">Publish</option> -->
                                 <option value="0">Draft</option>
                             </select>
                         </div>

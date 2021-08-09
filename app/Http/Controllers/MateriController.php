@@ -20,7 +20,7 @@ class MateriController extends Controller
      */
     public function index()
     {
-        $materi = Materi::all();
+        $materi = Materi::latest()->get();
         $user = User::where('id', Auth::user()->id)->first();
         return view('utama.materi.index', compact('materi', 'user'));
         // sama aja ama yg di atas
@@ -34,7 +34,7 @@ class MateriController extends Controller
      */
     public function create()
     {
-        $playlist = Playlist::all();
+        $playlist = Playlist::where('is_active', 1)->get();
         $user = User::where('id', Auth::user()->id)->first();
         return view ('utama.materi.create', compact('playlist', 'user'));
     }
@@ -55,6 +55,7 @@ class MateriController extends Controller
         // Untuk Simpan Data Yang Telah Di Input
         $data = $request->all();
         $data['slug'] = Str::slug($request->judul_materi);
+        $data['user_id'] = Auth::id();
         $data['gambar_materi'] = $request->file('gambar_materi')->store('materi');
 
         Materi::create($data);
@@ -83,7 +84,7 @@ class MateriController extends Controller
     public function edit($id)
     {
         $materi = Materi::find($id);
-        $playlist = Playlist::all();
+        $playlist = Playlist::where('is_active', 1)->get();
         $user = User::where('id', Auth::user()->id)->first();
         return view('utama.materi.edit', compact('materi', 'playlist', 'user'));
         // sama aja yg di atas ama yg d bawah
