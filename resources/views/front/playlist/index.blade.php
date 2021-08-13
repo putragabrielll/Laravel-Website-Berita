@@ -8,11 +8,13 @@
                 <div class="mt-5 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="section-headline text-center">
                         <h2>{{ $putra_sihombing->judul_playlist}}</h2>
+                        </br>
+                        <a><img src="{{ asset('uploads/' . $putra_sihombing->gambar_playlist) }}" class="img-fluid" alt=""></a>
                     </div>
                 </div>
             </div>
 
-            <div class="row awesome-project-content portfolio-container">
+            <div class="mt-5 row awesome-project-content portfolio-container">
 
                 <!-- portfolio-item start -->
                 @forelse ($playlist_materi as $row)

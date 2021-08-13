@@ -24,6 +24,13 @@
 				</div>
 
 				<div class="card-body">
+
+                    <div class="alert alert-info alert-dismissable">
+                        <a class="panel-close close" data-dismiss="alert">×</a> 
+                        <i class="fa fa-bell"></i>
+                        &nbsp;&nbsp;*requirement foto 1920 x 930 px.
+                    </div>
+
                     <form method="post" action="{{ route('slide.update', $slide->id) }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')

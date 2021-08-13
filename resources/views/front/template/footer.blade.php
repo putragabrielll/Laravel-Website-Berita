@@ -11,7 +11,8 @@
                   <h2><span>KJB</span>&nbsp;WebSite</h2>
                 </div>
 
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.</p>
+                <strong>Alamat:</strong><a>&nbsp;Jl. Gunung Mas No.46, Pasirkaliki, Kec. Cimahi Utara, Kota Cimahi, Jawa Barat 40514.</a>
+                <p>Gereja Masehi Advent Hari Ketujuh, Konfrens Jawa Barat.</p>
                 <div class="footer-icons">
                   <ul>
                     <li>
@@ -74,13 +75,15 @@
         </div>
       </div>
     </div>
+
+
     <div class="footer-area-bottom">
       <div class="container">
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="copyright text-center">
               <p>
-                &copy; Copyright <strong>eBusiness</strong>. All Rights Reserved
+                &copy; Copyright <strong>Konfrens Jawa Barat</strong>. All Rights Reserved
               </p>
             </div>
             <div class="credits">
@@ -90,7 +93,7 @@
               Licensing information: https://bootstrapmade.com/license/
               Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=eBusiness
             -->
-              Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+              Designed by <a href="https://bit.ly/3izWGLp">Gabriel Putra</a>
             </div>
           </div>
         </div>

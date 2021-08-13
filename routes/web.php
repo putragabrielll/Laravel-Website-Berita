@@ -17,6 +17,7 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Front_Berita_AllController;
+use App\Http\Controllers\Front_Materi_AllController;
 // Untuk Penulis
 use App\Http\Controllers\Penulis_ArtikelController;
 use App\Http\Controllers\Penulis_MateriController;
@@ -41,6 +42,7 @@ Route::get('/', [FrontendController::class, 'index']);
 Route::resource('/about', AboutController::class,);
 Route::resource('/contact', ContactController::class,);
 Route::resource('/berita-all', Front_Berita_AllController::class,);
+Route::resource('/materi-all', Front_Materi_AllController::class,);
 Route::get('/detail-artikel/{slug}', [FrontendController::class, 'detail'])->name('detail-artikel');
 Route::get('/artikel-kategori/{kategori}', [FrontendController::class, 'artikel_kategori'])->name('artikel-kategori');
 Route::get('/materi-vidio/{slug}', [FrontendController::class, 'vidio'])->name('materi-vidio');

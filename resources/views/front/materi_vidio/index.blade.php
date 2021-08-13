@@ -40,6 +40,13 @@
                                     </div>
                                     <div class="post-information">
                                         <u><h2>{{ $materi->judul_materi }}</h2></u>
+                                        <div class="entry-meta">
+                                            <span class="author-meta"><i class="bi bi-person"></i> <a href="#">{{ $materi->users->name}}</a></span>
+                                            <span class="tag-meta">
+                                                <i class="bi bi-folder"></i>
+                                                {{ $materi->playlist->judul_playlist}}
+                                            </span>
+                                        </div>
                                         <div class="entry-content">
                                             {!! $materi->deskripsi !!}
                                         </div>

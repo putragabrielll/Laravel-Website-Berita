@@ -25,6 +25,7 @@
             </ul>
           </li> -->
           <li><a class="nav-link scrollto" href="{{ route('berita-all.index') }}">News</a></li>
+          <li><a class="nav-link scrollto" href="{{ route('materi-all.index') }}">Videos</a></li>
           <li><a class="nav-link scrollto" href="#team">Bible Study</a></li>
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
           <li><a class="nav-link scrollto" href="{{ route('about.index') }}">About</a></li>

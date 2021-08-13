@@ -20,7 +20,7 @@
 			</ul>
 		</nav>
 		<div class="copyright ml-auto">
-			2021, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://bit.ly/3iyqtmA">Gabriel Putra</a>
+			2021, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://bit.ly/3izWGLp">Gabriel Putra</a>
 		</div>				
 	</div>
 </footer>

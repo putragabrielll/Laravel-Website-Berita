@@ -27,6 +27,11 @@
                             {{ Session('success') }}
                         </div>
                     @endif
+                    <div class="alert alert-info alert-dismissable">
+                        <a class="panel-close close" data-dismiss="alert">×</a> 
+                        <i class="fas fa-exclamation"></i>
+                        &nbsp;&nbsp;* Maksimal Sebanyak "2" Iklan.
+                    </div>
 					<div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>

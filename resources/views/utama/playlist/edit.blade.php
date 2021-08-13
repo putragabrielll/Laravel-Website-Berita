@@ -24,6 +24,13 @@
 				</div>
 
 				<div class="card-body">
+
+                    <div class="alert alert-info alert-dismissable">
+                        <a class="panel-close close" data-dismiss="alert">×</a> 
+                        <i class="fa fa-bell"></i>
+                        &nbsp;&nbsp;*requirement foto 1080 x 1080 px.
+                    </div>
+
                     <form method="post" action="{{ route('playlist.update', $playlist->id) }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
@@ -62,6 +69,9 @@
 
                         <div class="form-group">
                             <label for="gambar">Gambar Playlist</label>
+                            <p>
+                                *requirement 1080 x 1080 px
+                            </p>
                             <input type="file" name="gambar_playlist" class="form-control">
                             <br>
                             <label for="gambar">Gambar Saat Ini</label>

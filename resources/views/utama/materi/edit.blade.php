@@ -24,6 +24,13 @@
 				</div>
 
 				<div class="card-body">
+
+                    <div class="alert alert-info alert-dismissable">
+                        <a class="panel-close close" data-dismiss="alert">×</a> 
+                        <i class="fa fa-bell"></i>
+                        &nbsp;&nbsp;*requirement foto 1280 x 720 px.
+                    </div>
+
                     <form method="post" action="{{ route('materi.update', $materi->id) }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
@@ -72,6 +79,9 @@
 
                         <div class="form-group">
                             <label for="gambar">Gambar Materi</label>
+                            <p>
+                                *requirement 1280 x 720 px
+                            </p>
                             <input type="file" name="gambar_materi" class="form-control">
                             <br>
                             <label for="gambar">Gambar Saat Ini</label>

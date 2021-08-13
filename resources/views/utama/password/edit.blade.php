@@ -26,7 +26,7 @@
                     @endif
                     <div class="alert alert-info alert-dismissable">
                         <a class="panel-close close" data-dismiss="alert">×</a> 
-                        <i class="fa fa-coffee"></i>
+                        <i class="fa fa-lock"></i>
                         &nbsp;&nbsp;<strong>WARNING!!!</strong>&nbsp;&nbsp;Anda Akan Meng-Update Password.
                     </div>
                     <form method="post" action="{{ route('password.update', auth()->user()->id) }}" enctype="multipart/form-data">

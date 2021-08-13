@@ -24,6 +24,13 @@
 				</div>
 
 				<div class="card-body">
+
+                    <div class="alert alert-info alert-dismissable">
+                        <a class="panel-close close" data-dismiss="alert">×</a> 
+                        <i class="fa fa-bell"></i>
+                        &nbsp;&nbsp;*requirement foto 1600 x 1131 px.
+                    </div>
+
                     <form method="post" action="{{ route('iklan.update', $iklan->id) }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
@@ -51,6 +58,9 @@
 
                         <div class="form-group">
                             <label for="gambar">Gambar Iklan</label>
+                            <p>
+                                *requirement 1600 x 1131 px
+                            </p>
                             <input type="file" name="gambar_iklan" class="form-control">
                             <br>
                             <label for="gambar">Gambar Saat Ini</label>
